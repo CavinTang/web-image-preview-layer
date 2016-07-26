@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>layer-web-image-preview</title>
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" type="text/css"/>
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" type="text/css"/>
+
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"></script>
+    <script src="layer/layer.js"></script>
+    <script src="layer/layer.yz.js"></script>
+
+    <style>
+        html {
+            background-color: #E3E3E3;
+            font-size: 14px;
+            color: #000;
+            font-family: '微软雅黑'
+        }
+
+        a, a:hover {
+            text-decoration: none;
+        }
+
+        pre {
+            font-family: '微软雅黑'
+        }
+
+        .box {
+            padding: 20px;
+            background-color: #fff;
+            margin: 50px 100px;
+            border-radius: 5px;
+        }
+
+        .box a {
+            padding-right: 15px;
+        }
+
+        #about_hide {
+            display: none
+        }
+
+        .layer_text {
+            background-color: #fff;
+            padding: 20px;
+        }
+
+        .layer_text p {
+            margin-bottom: 10px;
+            text-indent: 2em;
+            line-height: 23px;
+        }
+
+        .button {
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
+            line-height: 30px;
+            padding: 0 20px;
+            background-color: #56B4DC;
+            color: #fff;
+            font-size: 14px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: normal;
+        }
+
+        .photos-demo img {
+            width: 200px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="box">
+    <h2 style="padding-bottom:20px;">相册层-依赖css与js</h2>
+    <pre>
+        &lt;link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" type="text/css"/&gt;
+        &lt;script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js" type="text/javascript"&gt;&lt;/script&gt;
+
+        &lt;script src="layer/layer.js" type="text/javascript"&gt;&lt;/script&gt;
+        &lt;script src="layer/layer.yz.js" type="text/javascript"&gt;&lt;/script&gt;
+    </pre>
+
+    <h2 style="padding-bottom:20px;">相册层-通过读取dom图片加载</h2>
+    <div id="photosDemo" class="photos-demo">
+        <!-- layer-src表示大图  layer-pid表示图片id  src表示缩略图-->
+
+        <img layer-src="http://static.oschina.net/uploads/space/2014/0516/012728_nAh8_1168184.jpg" layer-pid=""
+             src="http://static.oschina.net/uploads/space/2014/0516/012728_nAh8_1168184.jpg" alt="layer宣传图">
+        <img layer-src="http://sentsin.qiniudn.com/sentsinmy5.jpg" layer-pid=""
+             src="http://sentsin.qiniudn.com/sentsinmy5.jpg" alt="我入互联网这五年">
+        <img layer-src="" layer-pid=""
+             src="http://sentsin.qiniudn.com/sentsin_39101a660cf4671b7ec297a74cc652c74152104f.jpg" alt="微摄影">
+        <img layer-src="http://sentsin.qiniudn.com/sentsinsan01.jpg" layer-pid=""
+             src="http://sentsin.qiniudn.com/sentsinsan01.jpg" alt="三清山">
+        <img layer-src="http://ww2.sinaimg.cn/mw1024/5db11ff4jw1ehcyirr6quj20q00ex42w.jpg" layer-pid=""
+             src="http://ww2.sinaimg.cn/mw1024/5db11ff4jw1ehcyirr6quj20q00ex42w.jpg" alt="国足">
+        <h2 style="padding-bottom:20px;">对应代码</h2>
+        <pre>
+            new yzLayer().photos({
+                photos: '#photosDemo',
+                tab: function (pic, layero) {//optional, tab callback
+                    console.log('tab');
+                }
+            });
+        </pre>
+    </div>
+
+    <h2 style="padding-bottom:20px;">相册层-通过json数据加载</h2>
+    <div class="photos-demo">
+        <pre><a id="fromJsonDemo" class="button">通过json数据加载</a></pre>
+        <h2 style="padding-bottom:20px;">对应代码</h2>
+        <pre>
+            new yzLayer().photos({
+                photos: {
+                    "title": "相册标题", //相册标题
+                    "id": 123, //相册id
+                    "start": 0, //初始显示的图片序号，默认0
+                    "data": [   //相册包含的图片，数组格式
+                        {
+                            "alt": "图片名1",
+                            "pid": '', //图片id
+                            "src": "http://static.oschina.net/uploads/space/2014/0516/012728_nAh8_1168184.jpg", //原图地址
+                            "thumb": "http://static.oschina.net/uploads/space/2014/0516/012728_nAh8_1168184.jpg" //缩略图地址
+                        },
+                        {
+                            "alt": "图片名2",
+                            "pid": '', //图片id
+                            "src": "http://sentsin.qiniudn.com/sentsinmy5.jpg", //原图地址
+                            "thumb": "http://sentsin.qiniudn.com/sentsinmy5.jpg" //缩略图地址
+                        }
+                    ]
+                },
+                tab: function (pic, layero) {//optional, tab callback
+                    console.log('tab');
+                }
+            });
+        </pre>
+    </div>
+
+    <div class="box" style="text-align:center">
+        <a href="http://layer.layui.com/api.html#layer.photos" target="_blank">更多示例</a>
+    </div>
+
+</div>
+
+<script>
+    $(function () {
+        new yzLayer().photos({
+            photos: '#photosDemo',
+            tab: function (pic, layero) {//optional, tab callback
+                console.log('tab');
+            }
+        });
+        $('#fromJsonDemo').click(function () {
+            new yzLayer().photos({
+                photos: {
+                    "title": "相册标题", //相册标题
+                    "id": 123, //相册id
+                    "start": 0, //初始显示的图片序号，默认0
+                    "data": [   //相册包含的图片，数组格式
+                        {
+                            "alt": "图片名1",
+                            "pid": '', //图片id
+                            "src": "http://static.oschina.net/uploads/space/2014/0516/012728_nAh8_1168184.jpg", //原图地址
+                            "thumb": "http://static.oschina.net/uploads/space/2014/0516/012728_nAh8_1168184.jpg" //缩略图地址
+                        },
+                        {
+                            "alt": "图片名2",
+                            "pid": '', //图片id
+                            "src": "http://sentsin.qiniudn.com/sentsinmy5.jpg", //原图地址
+                            "thumb": "http://sentsin.qiniudn.com/sentsinmy5.jpg" //缩略图地址
+                        }
+                    ]
+                },
+                tab: function (pic, layero) {//optional, tab callback
+                    console.log('tab');
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

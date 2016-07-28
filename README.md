@@ -2,6 +2,13 @@
 &#8195;&#8195;&#8195;&#8195;主要是对[layer](http://www.layui.com/)的相册层进行了扩展,增加了一个工具条,主要还是参考了bugclose的图片预览。效果如下:<br>
 ![](https://github.com/CavinTang/web-image-preview-layer/raw/master/demo.png)
 
+## 参数说明
+名称 | 类型 | 说明
+------|------|--------
+photos|selector or json|可以是一个包含指定格式图片容器的选择器，也可以是一个包含图片的json对象，详细说明可以参考[layer photos](http://layer.layui.com/api.html#layer.photos)
+tab|function|图片切换完成之后的回调函数，可选
+needNavArrow|bool|是否显示图片上的切换箭头，可选，默认值：true
+needToolbar|bool|是否显示操作工具条，可选，默认值：true
 
 ## 引用JS
 1. 下载js
